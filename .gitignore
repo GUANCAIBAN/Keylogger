@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 *.log
 tags
+/.vs/Keylogger/v17
+/.vs
